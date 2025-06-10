@@ -1,4 +1,4 @@
-const { todoList } = require("../models/todo.model");
+const { todoList, todo_schema } = require("../models/todo.model");
 
 exports.getAllTodos = (req, res) => {
   res.json({
@@ -14,9 +14,13 @@ exports.getTodo = (req, res) => {
 };
 exports.createTodo = (req, res) => {
   let newTodo = req.body;
-  newTodo.id = crypto.randomUUID();
-  todoList.push(newTodo);
-  res.json({ message: "Todo ajouté avec succès", tab: todoList });
+  let validation_result = todo_schema.validate(req.body);
+  console.log(validation_result);
+  res.json({ message: validation_result });
+
+  //   newTodo.id = crypto.randomUUID();
+  //   todoList.push(newTodo);
+  //   res.json({ message: "Todo ajouté avec succès", tab: todoList });
 };
 exports.updateTodo = (req, res) => {
   let selectedId = req.params.identifiant;

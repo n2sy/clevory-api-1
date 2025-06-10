@@ -1,3 +1,5 @@
+const Joi = require("joi");
+
 var todoList = [
   {
     id: 1,
@@ -31,4 +33,10 @@ var todoList = [
   },
 ];
 
+var todo_schema = Joi.object({
+  title: Joi.string().min(3).required(),
+  year: Joi.number().positive().min(2000),
+});
+
 module.exports.todoList = todoList;
+module.exports.todo_schema = todo_schema;
