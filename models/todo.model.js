@@ -17,6 +17,18 @@ var todoList = [
     year: 2025,
     statut: "todo",
   },
+  {
+    id: 4,
+    title: "project 4",
+    year: 2022,
+    statut: "todo",
+  },
+  {
+    id: 5,
+    title: "project 5",
+    year: 2023,
+    statut: "todo",
+  },
 ];
 
 module.exports.todoList = todoList;

@@ -39,3 +39,7 @@ exports.deleteTodo = (req, res) => {
     res.json({ message: "Todo supprimé avec succès", tab: todoList });
   }
 };
+exports.filterTodos = (req, res) => {
+  let listeQueryParams = req.query;
+  res.send({ query: listeQueryParams });
+};
