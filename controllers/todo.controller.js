@@ -29,4 +29,13 @@ exports.updateTodo = (req, res) => {
     res.json({ message: "Todo modifé avec succès", tab: todoList });
   }
 };
-exports.deleteTodo = (req, res) => {};
+exports.deleteTodo = (req, res) => {
+  let selectedId = req.params.id;
+  let i = todoList.findIndex((element) => element.id == selectedId);
+  if (i == -1)
+    res.status(404).json({ message: "Aucun Todo n'existe avec cet id" });
+  else {
+    todoList.splice(i, 1);
+    res.json({ message: "Todo supprimé avec succès", tab: todoList });
+  }
+};
