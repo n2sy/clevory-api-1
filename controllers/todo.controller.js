@@ -41,5 +41,8 @@ exports.deleteTodo = (req, res) => {
 };
 exports.filterTodos = (req, res) => {
   let listeQueryParams = req.query;
-  res.send({ query: listeQueryParams });
+  let resultat = todoList.filter(
+    (element) => element.year >= req.query.y1 && element.year <= req.query.y2
+  );
+  res.json({ resultat });
 };
