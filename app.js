@@ -1,8 +1,12 @@
 const express = require("express");
+const todoRoutes = require("./routes/todo.routes");
+
 const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+app.use("/todo", todoRoutes);
 
 app.post("/", (req, res) => {
   console.log(req.body);
@@ -15,6 +19,8 @@ app.post("/", (req, res) => {
 // });
 
 app.get("/", (req, res) => {
+  console.log(req);
+
   console.log(__dirname);
   res.sendFile(__dirname + "/index.html");
 });
