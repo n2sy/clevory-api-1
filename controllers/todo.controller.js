@@ -1,4 +1,4 @@
-const todoList = require("../models/todo.model");
+const { todoList } = require("../models/todo.model");
 
 exports.getAllTodos = (req, res) => {
   res.json({
@@ -7,9 +7,7 @@ exports.getAllTodos = (req, res) => {
   });
 };
 exports.getTodo = (req, res) => {
-  let selectedTodo = todoList.todoList.find(
-    (element) => element.id == req.params.id
-  );
+  let selectedTodo = todoList.find((element) => element.id == req.params.id);
   if (!selectedTodo)
     res.status(404).json({ message: "Aucun Todo n'existe avec cet id" });
   res.status(202).json({ message: "Todo Trouvé", todo: selectedTodo });
