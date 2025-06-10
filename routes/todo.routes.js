@@ -5,7 +5,7 @@ const router = express.Router();
 router.get("/all", todoController.getAllTodos);
 router.get("/search/:id", todoController.getTodo);
 router.post("/add", todoController.createTodo);
-router.put("/edit/:id", todoController.updateTodo);
+router.put("/edit/:identifiant", todoController.updateTodo);
 router.delete("/delete/:id", todoController.deleteTodo);
 
 module.exports = router;

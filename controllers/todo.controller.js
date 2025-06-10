@@ -18,5 +18,15 @@ exports.createTodo = (req, res) => {
   todoList.push(newTodo);
   res.json({ message: "Todo ajouté avec succès", tab: todoList });
 };
-exports.updateTodo = (req, res) => {};
+exports.updateTodo = (req, res) => {
+  let selectedId = req.params.identifiant;
+  let i = todoList.findIndex((element) => element.id == selectedId);
+  if (i == -1)
+    res.status(404).json({ message: "Aucun Todo n'existe avec cet id" });
+  else {
+    req.body.id = selectedId;
+    todoList[i] = req.body;
+    res.json({ message: "Todo modifé avec succès", tab: todoList });
+  }
+};
 exports.deleteTodo = (req, res) => {};
